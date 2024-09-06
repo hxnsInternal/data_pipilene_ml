@@ -1,0 +1,24 @@
+# Ignorar archivos compilados por Python
+__pycache__/
+*.py[cod]
+
+# Ignorar entornos virtuales
+venv/
+env/
+
+# Ignorar logs
+logs/
+
+# Ignorar datos de salida
+data/output/
+data/*.csv
+data/*.json
+
+# Ignorar archivos de configuración específicos de entorno
+config.yaml
+
+# Ignorar archivos generados automáticamente
+*.log
+*.tmp
+*.swp
+.DS_Store
