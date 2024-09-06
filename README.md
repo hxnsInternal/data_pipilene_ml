@@ -47,7 +47,7 @@ project/
 │       ├── test_ingest.py             # Pruebas unitarias para ingest.py
 │       ├── test_load.py               # Pruebas unitarias para load.py
 │       └── test_transform.py          # Pruebas unitarias para transform.py
-├── evidences/                         # Directorio para screenshots de la ejecución del pipeline
+├── evidences/                         # Directorio con screenshots de la ejecución del pipeline
 │   ├── 01 - pipeline_diragram.png     # Diagrama del pipeline
 │   ├── 02 - pipeline_execution.png    # Ejecución del pipeline
 │   ├── 03 - unit_test_executions.png  # Ejecución de las pruebas unitarias
