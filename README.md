@@ -157,4 +157,4 @@ logging:
 
 ## Nota
 
-Gracias por la oportunidad y el tiempo brindado para desarrollar este test. Espero haber demostrado mis capacidades y mi capacidad de análisis.
+Gracias por la oportunidad y el tiempo brindado para desarrollar este test. Espero haber demostrado mis habilidades tecnicas y de análisis.
