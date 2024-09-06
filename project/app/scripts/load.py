@@ -26,13 +26,18 @@ def load_data(filtered_df, config: dict):
         logging.info("Saving final DataFrame...")
 
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        partitions = config['load']['partitions']
+        output_path = os.path.join(BASE_DIR, config['load']['output_path'])
 
+
+        print(f"BASE_DIR: {BASE_DIR}")
+        print(f"output_path: {output_path}")
         
         # Guardar el DataFrame en el formato CSV con las configuraciones dadas
-        filtered_df.coalesce(config['load']['partitions']).write.csv(
-            config['load']['output_path'], header=True, mode="overwrite"
+        filtered_df.coalesce(partitions).write.csv(
+            output_path, header=True, mode="overwrite"
         )
-        
+    
         logging.info("Data saved successfully.")
 
     except AnalysisException as analysis_error:

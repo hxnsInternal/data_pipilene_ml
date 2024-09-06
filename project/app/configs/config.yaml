@@ -17,7 +17,7 @@ transform:
 
 # Configuración de la etapa de carga de datos procesados
 load:
-  output_path: "../data/output"    # Directorio de salida donde se almacenarán los datos procesados
+  output_path: "data/output"    # Directorio de salida donde se almacenarán los datos procesados
   partitions: 1                    # Número de particiones para el archivo de salida
   format: "csv"                    # Formato de salida (CSV)
 

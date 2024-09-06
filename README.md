@@ -82,15 +82,15 @@ El archivo `config.yaml` centraliza todas las configuraciones del pipeline. A co
 # Configuración de la etapa de ingestión de datos
 ingest:
   files:
-    - path: "../data/input/prints.json"  # Ruta al archivo de impresiones en formato JSON
-      format: "json"               # Especifica el formato del archivo (JSON)
-    - path: "../data/input/taps.json"    # Ruta al archivo de clics en formato JSON
-      format: "json"               # Especifica el formato del archivo (JSON)
-    - path: "../data/input/pays.csv"     # Ruta al archivo de pagos en formato CSV
-      format: "csv"                # Especifica el formato del archivo (CSV)
-      options:                     # Opciones adicionales para la lectura de CSV
-        header: true               # Indica si el archivo CSV contiene un encabezado
-        inferSchema: true          # Permite a PySpark inferir automáticamente el esquema del archivo
+    - path: "data/input/prints.json"  # Ruta al archivo de impresiones en formato JSON
+      format: "json"                  # Especifica el formato del archivo (JSON)
+    - path: "data/input/taps.json"    # Ruta al archivo de clics en formato JSON
+      format: "json"                  # Especifica el formato del archivo (JSON)
+    - path: "data/input/pays.csv"     # Ruta al archivo de pagos en formato CSV
+      format: "csv"                   # Especifica el formato del archivo (CSV)
+      options:                        # Opciones adicionales para la lectura de CSV
+        header: true                  # Indica si el archivo CSV contiene un encabezado
+        inferSchema: true             # Permite a PySpark inferir automáticamente el esquema del archivo
 
 # Configuración de la etapa de transformación de datos
 transform:
@@ -98,14 +98,14 @@ transform:
 
 # Configuración de la etapa de carga de datos procesados
 load:
-  output_path: "../data/output"    # Directorio de salida donde se almacenarán los datos procesados
+  output_path: "data/output"    # Directorio de salida donde se almacenarán los datos procesados
   partitions: 1                    # Número de particiones para el archivo de salida
   format: "csv"                    # Formato de salida (CSV)
 
 # Configuración de los logs de la aplicación
 logging:
   level: "INFO"                    # Nivel de detalle de los logs (INFO, DEBUG, ERROR, etc.)
-  file: "../logs/pipeline.log"     # Archivo donde se almacenarán los logs de la ejecución
+  file: "logs/pipeline.log"     # Archivo donde se almacenarán los logs de la ejecución
 ```
 
 ## Ejecución del Pipeline
@@ -115,19 +115,7 @@ logging:
 1. **Ingesta de Datos**:
 
    ```bash
-   python app/scripts/ingest.py app/configs/config.yaml
-   ```
-
-2. **Transformación de Datos**:
-
-   ```bash
-   python app/scripts/transform.py app/configs/config.yaml
-   ```
-
-3. **Carga de Datos**:
-
-   ```bash
-   python app/scripts/load.py app/configs/config.yaml
+   python app/scripts/main.py app/configs/config.yaml
    ```
 
 ### Opción 2: Ejecutar con Airflow

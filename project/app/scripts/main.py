@@ -146,7 +146,7 @@ if __name__ == "__main__":
         # Carga de datos
         load_data(transformed_df, config)
         
-        #logging.info("Pipeline completed successfully.")
+        logging.info("Pipeline completed successfully.")
     
     except Exception as e:
         logging.error(f"Pipeline failed with error: {e}")
