@@ -134,7 +134,7 @@ logging:
 1. **Ingesta de Datos**:
 
    ```bash
-   python app/scripts/main.py app/configs/config.yaml
+   python app/scripts/main.py
    ```
 
 ### Opción 2: Ejecutar con Airflow
