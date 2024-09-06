@@ -1,10 +1,13 @@
-from datetime import datetime
+import os
 import logging
 import yaml
+from datetime import datetime
 from pyspark.sql import SparkSession
 from ingest import *
 from transform import *
 from load import *
+
+BASE_DIR = ""
 
 def setup_logging(config):
     
@@ -22,14 +25,23 @@ def setup_logging(config):
     """
 
     try:
+
+        # Obtener la ruta completa del archivo de log
+        log_dir = os.path.join(BASE_DIR, os.path.dirname(config['logging']['file']))
+        log_filename = os.path.basename(config['logging']['file'])
+
         current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        log_filename = f"{config['logging']['file'].split('.log')[0]}_{current_time}.log"
+        log_filename = f"{log_filename.split('.log')[0]}_{current_time}.log"
+        log_path = os.path.join(BASE_DIR, log_dir, log_filename)
+
+        print(f"ruta path logs-------> {log_path}")
 
         logging.basicConfig(
-            filename=log_filename,
+            filename=log_path,
             level=getattr(logging, config['logging']['level']),
             format='%(asctime)s %(levelname)s %(message)s'
         )
+        
     except KeyError as key_error:
         logging.error(f"Logging configuration key missing: {key_error}")
         raise
@@ -110,29 +122,37 @@ if __name__ == "__main__":
     """
 
     try:
+
+        # Obtener la ruta base del proyecto dinámicamente
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        config_path = os.path.join(BASE_DIR, 'configs', 'config.yaml')
+
         # Cargar configuración
-        config = load_config('../configs/config.yaml')
-        
+        config = load_config(config_path)
+
+        #print(f"*********************** {config}")
+
         # Configurar logging
         setup_logging(config)
         
         # Crear sesión de Spark
-        spark = create_spark_session("ClicksAnalysis")
+        #spark = create_spark_session("ClicksAnalysis")
         
-        logging.info("Starting pipeline...")
+        #logging.info("Starting pipeline...")
         
         # Ingesta de datos
-        prints_df, taps_df, payments_df = ingest_data(spark, config)
+        #prints_df, taps_df, payments_df = ingest_data(spark, config)
 
         # Transformación de datos
-        transformed_df = transform_data(prints_df, taps_df, payments_df, spark, config)
+        #transformed_df = transform_data(prints_df, taps_df, payments_df, spark, config)
         
         # transformed_df.show(10)
 
         # Carga de datos
-        load_data(transformed_df, config)
+        #load_data(transformed_df, config)
         
-        logging.info("Pipeline completed successfully.")
+        #logging.info("Pipeline completed successfully.")
     
     except Exception as e:
         logging.error(f"Pipeline failed with error: {e}")

@@ -24,4 +24,4 @@ load:
 # Configuración de los logs de la aplicación
 logging:
   level: "INFO"                    # Nivel de detalle de los logs (INFO, DEBUG, ERROR, etc.)
-  file: "../logs/pipeline.log"     # Archivo donde se almacenarán los logs de la ejecución
+  file: "logs/pipeline.log"     # Archivo donde se almacenarán los logs de la ejecución
