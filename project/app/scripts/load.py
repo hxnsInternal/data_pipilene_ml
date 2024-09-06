@@ -28,11 +28,7 @@ def load_data(filtered_df, config: dict):
         BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         partitions = config['load']['partitions']
         output_path = os.path.join(BASE_DIR, config['load']['output_path'])
-
-
-        print(f"BASE_DIR: {BASE_DIR}")
-        print(f"output_path: {output_path}")
-        
+       
         # Guardar el DataFrame en el formato CSV con las configuraciones dadas
         filtered_df.coalesce(partitions).write.csv(
             output_path, header=True, mode="overwrite"

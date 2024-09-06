@@ -59,8 +59,11 @@ def test_load_data(spark):
     # Ejecutar la carga de datos
     load_data(df, config)
 
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    output_path = os.path.join(BASE_DIR, config['load']['output_path'])
+
     # Verificar que el archivo se haya guardado correctamente
-    assert os.path.exists(config['load']['output_path']), "El archivo de salida no se creó"
+    assert os.path.exists(output_path), "El archivo de salida no se creó"
 
     # Eliminar el path que contiene archivo de prueba después de la verificación
-    shutil.rmtree(config['load']['output_path']) 
+    shutil.rmtree(output_path) 

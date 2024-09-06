@@ -18,36 +18,41 @@ Este proyecto contiene un pipeline de procesamiento de datos en **PySpark**, orq
 ## Estructura del Proyecto
 
 ```
-projetc/
-├── README.md                      # Archivo README que describe el proyecto
-├── .gitignore                     # Archivos y directorios que Git debe ignorar
+project/
+├── README.md                          # Archivo README que describe el proyecto
+├── .gitignore                         # Archivos y directorios que Git debe ignorar
 ├── airflow/
 │   └── dags/
-│       └── pipeline_dag.py        # DAG de Airflow qßue orquesta el pipeline
+│       └── pipeline_dag.py            # DAG de Airflow que orquesta el pipeline
 ├── app/
 │   ├── configs/
-│   │   ├── __init__.py            # Inicialización del paquete configs
-│   │   └── config.yaml            # Archivo de configuración del pipeline
+│   │   ├── __init__.py                # Inicialización del paquete configs
+│   │   └── config.yaml                # Archivo de configuración del pipeline
 │   ├── data/
-│   │   ├── input/                 # Directorio con los archivos de entrada
+│   │   ├── input/                     # Directorio con los archivos de entrada
 │   │   │   ├── pays.csv
 │   │   │   ├── prints.json
 │   │   │   └── taps.json
-│   │   └── output/                # Directorio donde se almacenan los archivos de salida procesados
-│   ├── logs/                      # Directorio con logs generados por el pipeline
-│   │   └── __init__.py            # Inicialización del paquete logs
-│   ├── scripts/                   # Scripts del pipeline (ingesta, transformación y carga)
-│   │   ├── __init__.py            # Inicialización del paquete scripts
-│   │   ├── ingest.py              # Script para la ingesta de datos
-│   │   ├── load.py                # Script para la carga de datos procesados
-│   │   ├── main.py                # Script principal que ejecuta la lógica del pipeline
-│   │   └── transform.py           # Script para la transformación de datos
-│   └── tests/                     # Pruebas unitarias para cada script del pipeline
-│       ├── __init__.py            # Inicialización del paquete tests
-│       ├── test_ingest.py         # Pruebas unitarias para ingest.py
-│       ├── test_load.py           # Pruebas unitarias para load.py
-│       └── test_transform.py      # Pruebas unitarias para transform.py
-└── requirements.txt               # Dependencias del proyecto
+│   │   └── output/                    # Directorio donde se almacenan los archivos de salida procesados
+│   ├── logs/                          # Directorio con logs generados por el pipeline
+│   │   └── __init__.py                # Inicialización del paquete logs
+│   ├── scripts/                       # Scripts del pipeline (ingesta, transformación y carga)
+│   │   ├── __init__.py                # Inicialización del paquete scripts
+│   │   ├── ingest.py                  # Script para la ingesta de datos
+│   │   ├── load.py                    # Script para la carga de datos procesados
+│   │   ├── main.py                    # Script principal que ejecuta la lógica del pipeline
+│   │   └── transform.py               # Script para la transformación de datos
+│   └── tests/                         # Pruebas unitarias para cada script del pipeline
+│       ├── __init__.py                # Inicialización del paquete tests
+│       ├── test_ingest.py             # Pruebas unitarias para ingest.py
+│       ├── test_load.py               # Pruebas unitarias para load.py
+│       └── test_transform.py          # Pruebas unitarias para transform.py
+├── evidences/                         # Directorio para screenshots de la ejecución del pipeline
+│   ├── 01 - pipeline_diragram.png     # Diagrama del pipeline
+│   ├── 02 - pipeline_execution.png    # Ejecución del pipeline
+│   ├── 03 - unit_test_executions.png  # Ejecución de las pruebas unitarias
+│   └── 04 - output_pipeline.png       # Output del pipeline
+└── requirements.txt                   # Dependencias del proyecto
 
 ```
 
