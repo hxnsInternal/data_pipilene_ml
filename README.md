@@ -48,7 +48,6 @@ projetc/
 1. **Python 3.8+**: Asegúrate de tener Python 3.8 o superior instalado.
 2. **Apache Airflow**: Instalado y configurado en tu entorno.
 3. **PySpark**: Puedes instalarlo usando `pip` o configurar un clúster de Spark.
-4. **Docker** (opcional): Para ejecutar Airflow y PySpark en contenedores.
 
 ## Instalación
 
