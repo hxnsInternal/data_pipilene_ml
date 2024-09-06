@@ -13,15 +13,15 @@ ingest:
 
 # Configuración de la etapa de transformación de datos
 transform:
-  time_frame_on_days: 21           # Definición del marco temporal en días para análisis de datos
+  time_frame_on_days: 21              # Definición del marco temporal en días para análisis de datos
 
 # Configuración de la etapa de carga de datos procesados
 load:
-  output_path: "data/output"    # Directorio de salida donde se almacenarán los datos procesados
-  partitions: 1                    # Número de particiones para el archivo de salida
-  format: "csv"                    # Formato de salida (CSV)
+  output_path: "data/output"          # Directorio de salida donde se almacenarán los datos procesados
+  partitions: 1                       # Número de particiones para el archivo de salida
+  format: "csv"                       # Formato de salida (CSV)
 
 # Configuración de los logs de la aplicación
 logging:
-  level: "INFO"                    # Nivel de detalle de los logs (INFO, DEBUG, ERROR, etc.)
-  file: "logs/pipeline.log"     # Archivo donde se almacenarán los logs de la ejecución
+  level: "INFO"                       # Nivel de detalle de los logs (INFO, DEBUG, ERROR, etc.)
+  file: "logs/pipeline.log"           # Archivo donde se almacenarán los logs de la ejecución
