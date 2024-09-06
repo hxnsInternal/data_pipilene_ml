@@ -1,15 +1,15 @@
 # Configuración de la etapa de ingestión de datos
 ingest:
   files:
-    - path: "../data/input/prints.json"  # Ruta al archivo de impresiones en formato JSON
-      format: "json"               # Especifica el formato del archivo (JSON)
-    - path: "../data/input/taps.json"    # Ruta al archivo de clics en formato JSON
-      format: "json"               # Especifica el formato del archivo (JSON)
-    - path: "../data/input/pays.csv"     # Ruta al archivo de pagos en formato CSV
-      format: "csv"                # Especifica el formato del archivo (CSV)
-      options:                     # Opciones adicionales para la lectura de CSV
-        header: true               # Indica si el archivo CSV contiene un encabezado
-        inferSchema: true          # Permite a PySpark inferir automáticamente el esquema del archivo
+    - path: "data/input/prints.json"  # Ruta al archivo de impresiones en formato JSON
+      format: "json"                  # Especifica el formato del archivo (JSON)
+    - path: "data/input/taps.json"    # Ruta al archivo de clics en formato JSON
+      format: "json"                  # Especifica el formato del archivo (JSON)
+    - path: "data/input/pays.csv"     # Ruta al archivo de pagos en formato CSV
+      format: "csv"                   # Especifica el formato del archivo (CSV)
+      options:                        # Opciones adicionales para la lectura de CSV
+        header: true                  # Indica si el archivo CSV contiene un encabezado
+        inferSchema: true             # Permite a PySpark inferir automáticamente el esquema del archivo
 
 # Configuración de la etapa de transformación de datos
 transform:

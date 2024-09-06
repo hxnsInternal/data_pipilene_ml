@@ -1,3 +1,4 @@
+import os
 import logging
 from pyspark.sql import SparkSession
 from pyspark.sql.utils import AnalysisException
@@ -28,18 +29,24 @@ def ingest_data(spark: SparkSession, config: dict):
     try:
         logging.info("Ingesting data from sources...")
         
-        # Leer prints y taps en formato JSON
+        # Obtener la ruta base del proyecto dinámicamente
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-        prints_path = config['ingest']['files'][0]['path']
-        taps_path = config['ingest']['files'][1]['path']
+        # Obtener la ruta de los archivos input
+
+        prints_path = os.path.join(BASE_DIR, config['ingest']['files'][0]['path'])
+        taps_path = os.path.join(BASE_DIR, config['ingest']['files'][1]['path'])
+
+        # Cargar ficheros json en DFs
         prints_df = spark.read.json(prints_path)
         taps_df = spark.read.json(taps_path)
         
         # Leer pays en formato CSV con opciones adicionales si existen
         csv_options = config['ingest']['files'][2].get('options', {})
-        payments_path = config['ingest']['files'][2]['path']
+
+        payments_path = os.path.join(BASE_DIR, config['ingest']['files'][2]['path'])
         payments_df = spark.read.csv(payments_path, **csv_options)
-        
+
         logging.info("Data ingested successfully.")
         
         return prints_df, taps_df, payments_df

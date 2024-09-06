@@ -34,8 +34,6 @@ def setup_logging(config):
         log_filename = f"{log_filename.split('.log')[0]}_{current_time}.log"
         log_path = os.path.join(BASE_DIR, log_dir, log_filename)
 
-        print(f"ruta path logs-------> {log_path}")
-
         logging.basicConfig(
             filename=log_path,
             level=getattr(logging, config['logging']['level']),
@@ -131,26 +129,22 @@ if __name__ == "__main__":
         # Cargar configuración
         config = load_config(config_path)
 
-        #print(f"*********************** {config}")
-
         # Configurar logging
         setup_logging(config)
         
         # Crear sesión de Spark
-        #spark = create_spark_session("ClicksAnalysis")
+        spark = create_spark_session("ClicksAnalysis")
         
-        #logging.info("Starting pipeline...")
+        logging.info("Starting pipeline...")
         
         # Ingesta de datos
-        #prints_df, taps_df, payments_df = ingest_data(spark, config)
+        prints_df, taps_df, payments_df = ingest_data(spark, config)
 
         # Transformación de datos
-        #transformed_df = transform_data(prints_df, taps_df, payments_df, spark, config)
-        
-        # transformed_df.show(10)
+        transformed_df = transform_data(prints_df, taps_df, payments_df, spark, config)
 
         # Carga de datos
-        #load_data(transformed_df, config)
+        load_data(transformed_df, config)
         
         #logging.info("Pipeline completed successfully.")
     

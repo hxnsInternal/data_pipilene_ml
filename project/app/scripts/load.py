@@ -1,7 +1,8 @@
+import os
 import logging
 from pyspark.sql.utils import AnalysisException
 
-def load_data(filtered_df, config):
+def load_data(filtered_df, config: dict):
     
     """
     Guarda el DataFrame filtrado en un archivo CSV utilizando las configuraciones proporcionadas.
@@ -23,6 +24,9 @@ def load_data(filtered_df, config):
     
     try:
         logging.info("Saving final DataFrame...")
+
+        BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
         
         # Guardar el DataFrame en el formato CSV con las configuraciones dadas
         filtered_df.coalesce(config['load']['partitions']).write.csv(
