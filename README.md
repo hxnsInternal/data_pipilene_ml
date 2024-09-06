@@ -1,40 +1,54 @@
 
-# Hans Zamora Carrillo - Data Engineer Test - Mercado Libre
+# Hans Zamora Carrillo - Data Engineer Test 
 
 ## Descripción
+
+He utilizado Python, Spark, Spark SQL y Airflow para la construcción del pipeline, respondiendo a todos los requerimientos solicitados en la prueba y demostrando mi dominio en Python y SQL. Además, todo el código y su funcionamiento están debidamente documentados para facilitar su comprensión y lectura. Por último, he implementado buenas prácticas como docstrings, PEP8, modularización del código, pruebas unitarias, despliegue y orquestación.
+
+### Bonus:
+
+Implementé un repositorio en Git para almacenar el pipeline, así como una propuesta de orquestación utilizando Airflow.
+
 
 Este proyecto contiene un pipeline de procesamiento de datos en **PySpark**, orquestado mediante **Airflow**. El pipeline realiza las siguientes etapas de procesamiento de datos:
 - **Ingesta**: Lectura de archivos de datos en formato JSON y CSV.
 - **Transformación**: Limpieza y aplicación de reglas de negocio a los datos.
 - **Carga**: Almacenamiento de los datos procesados en un archivo de salida.
 
-El archivo de configuración `config.yaml` permite centralizar las rutas y parámetros clave del pipeline, haciendo que sea fácil de mantener y ajustar.
-
 ## Estructura del Proyecto
 
 ```
 projetc/
 ├── README.md                      # Archivo README que describe el proyecto
+├── .gitignore                     # Archivos y directorios que Git debe ignorar
 ├── airflow/
 │   └── dags/
-│       └── pipeline_dag.py        # DAG de Airflow que orquesta el pipeline
+│       └── pipeline_dag.py        # DAG de Airflow qßue orquesta el pipeline
 ├── app/
 │   ├── configs/
+│   │   ├── __init__.py            # Inicialización del paquete configs
 │   │   └── config.yaml            # Archivo de configuración del pipeline
 │   ├── data/
 │   │   ├── input/                 # Directorio con los archivos de entrada
 │   │   │   ├── pays.csv
 │   │   │   ├── prints.json
 │   │   │   └── taps.json
-│   │   └── output/                # Directorio donde se almacenan los archivos de salida
+│   │   └── output/                # Directorio donde se almacenan los archivos de salida procesados
 │   ├── logs/                      # Directorio con logs generados por el pipeline
+│   │   └── __init__.py            # Inicialización del paquete logs
 │   ├── scripts/                   # Scripts del pipeline (ingesta, transformación y carga)
-│   │   ├── ingest.py
-│   │   ├── load.py
-│   │   ├── main.py
-│   │   └── transform.py
+│   │   ├── __init__.py            # Inicialización del paquete scripts
+│   │   ├── ingest.py              # Script para la ingesta de datos
+│   │   ├── load.py                # Script para la carga de datos procesados
+│   │   ├── main.py                # Script principal que ejecuta la lógica del pipeline
+│   │   └── transform.py           # Script para la transformación de datos
 │   └── tests/                     # Pruebas unitarias para cada script del pipeline
+│       ├── __init__.py            # Inicialización del paquete tests
+│       ├── test_ingest.py         # Pruebas unitarias para ingest.py
+│       ├── test_load.py           # Pruebas unitarias para load.py
+│       └── test_transform.py      # Pruebas unitarias para transform.py
 └── requirements.txt               # Dependencias del proyecto
+
 ```
 
 ## Tecnologías
@@ -94,18 +108,18 @@ ingest:
 
 # Configuración de la etapa de transformación de datos
 transform:
-  time_frame_on_days: 21           # Definición del marco temporal en días para análisis de datos
+  time_frame_on_days: 21              # Definición del marco temporal en días para análisis de datos
 
 # Configuración de la etapa de carga de datos procesados
 load:
-  output_path: "data/output"    # Directorio de salida donde se almacenarán los datos procesados
-  partitions: 1                    # Número de particiones para el archivo de salida
-  format: "csv"                    # Formato de salida (CSV)
+  output_path: "data/output"          # Directorio de salida donde se almacenarán los datos procesados
+  partitions: 1                       # Número de particiones para el archivo de salida
+  format: "csv"                       # Formato de salida (CSV)
 
 # Configuración de los logs de la aplicación
 logging:
-  level: "INFO"                    # Nivel de detalle de los logs (INFO, DEBUG, ERROR, etc.)
-  file: "logs/pipeline.log"     # Archivo donde se almacenarán los logs de la ejecución
+  level: "INFO"                       # Nivel de detalle de los logs (INFO, DEBUG, ERROR, etc.)
+  file: "logs/pipeline.log"           # Archivo donde se almacenarán los logs de la ejecución
 ```
 
 ## Ejecución del Pipeline
@@ -138,4 +152,4 @@ logging:
 
 ## Nota
 
-Gracias por la oportunidad y el tiempo bridnado para desarrollar este test, espero haber demostrado mis capacidades a nivel de python, sql y data engineering en general.
+Gracias por la oportunidad y el tiempo brindado para desarrollar este test. Espero haber demostrado mis capacidades y mi capacidad de análisis.
